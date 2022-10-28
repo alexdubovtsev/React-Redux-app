@@ -2,10 +2,10 @@ const defaultState = {
   customers: [],
 };
 
-const ADD_CUSTOMER = "ADD_CUSTOMER";
-const ADD_MANY_CUSTOMERS = "ADD_MANY_CUSTOMERS";
-const REMOVE_CUSTOMER = "REMOVE_CUSTOMER";
-
+export const ADD_CUSTOMER = "ADD_CUSTOMER";
+export const ADD_MANY_CUSTOMERS = "ADD_MANY_CUSTOMERS";
+export const FETCH_CUSTOMERS = "FETCH_CUSTOMERS"
+export const REMOVE_CUSTOMER = "REMOVE_CUSTOMER";
 
 export const customerreducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -25,9 +25,6 @@ export const customerreducer = (state = defaultState, action) => {
         ],
       };
 
-    case "GET_CUSTOMERS":
-      return { ...state, cash: state.cash - action.payload };
-
     default:
       return state;
   }
@@ -35,9 +32,13 @@ export const customerreducer = (state = defaultState, action) => {
 
 // функция, которая будет возвращать объект (action)
 export const addCustomerAction = (payload) => ({ type: ADD_CUSTOMER, payload });
-export const addManyCustomersAction = (payload) => ({ type: ADD_MANY_CUSTOMERS, payload });
+export const addManyCustomersAction = (payload) => ({
+  type: ADD_MANY_CUSTOMERS,
+  payload,
+});
 export const removeCustomerAction = (payload) => ({
   type: REMOVE_CUSTOMER,
   payload,
 });
+export const fetchCustomerAction = () => ({ type: FETCH_CUSTOMERS });
 
